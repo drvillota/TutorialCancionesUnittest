@@ -1,5 +1,5 @@
 import unittest
-import random
+import secrets
 
 from src.logica.coleccion import Coleccion
 from src.modelo.album import Album, Medio
@@ -33,7 +33,7 @@ class AlbumTestCase(unittest.TestCase):
                 self.data_factory.unique.name(),
                 self.data_factory.random_int(1800,2021),
                 self.data_factory.text(),
-                random.choice(self.medios)))
+                secrets.choice(self.medios)))
             self.albumes.append(
                 Album(
                     titulo = self.data[-1][0],
@@ -72,7 +72,7 @@ class AlbumTestCase(unittest.TestCase):
         
    def test_agregar_album(self):
         '''Prueba la adición de un álbum'''
-        self.data.append((self.data_factory.unique.name(), self.data_factory.random_int(1800, 2021), self.data_factory.text(), random.choice(self.medios)))
+        self.data.append((self.data_factory.unique.name(), self.data_factory.random_int(1800, 2021), self.data_factory.text(), secrets.choice(self.medios)))
 
         resultado = self.coleccion.agregar_album(
             titulo = self.data[-1][0],
@@ -92,7 +92,7 @@ class AlbumTestCase(unittest.TestCase):
         
    def test_editar_album(self):
         '''Prueba la edición de dos álbumes'''
-        self.data.append((self.data_factory.unique.name(), self.data_factory.random_int(1800, 2021), self.data_factory.text(), random.choice(self.medios)))
+        self.data.append((self.data_factory.unique.name(), self.data_factory.random_int(1800, 2021), self.data_factory.text(), secrets.choice(self.medios)))
 
         #Se cambia el título el primer álbum creado por uno que no existe
         resultado1 = self.coleccion.editar_album(
@@ -126,7 +126,7 @@ class AlbumTestCase(unittest.TestCase):
                     titulo = self.data_factory.unique.name(),
                     ano = self.data_factory.random_int(1800, 2021),
                     descripcion = self.data_factory.text(),
-                    medio = random.choice(self.medios),
+                    medio = secrets.choice(self.medios),
                     canciones = []
                 )
 
@@ -142,7 +142,7 @@ class AlbumTestCase(unittest.TestCase):
         
    def test_verificar_almacenamiento_agregar_album(self):
         '''Verifica que al almacenar los datos queden guardados en la el almacenamiento'''
-        self.data.append((self.data_factory.unique.name(), self.data_factory.random_int(1800, 2021), self.data_factory.text(), random.choice(self.medios)))
+        self.data.append((self.data_factory.unique.name(), self.data_factory.random_int(1800, 2021), self.data_factory.text(), secrets.choice(self.medios)))
 
         self.coleccion.agregar_album(
             titulo = self.data[-1][0],
